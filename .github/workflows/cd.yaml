@@ -17,4 +17,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd tet
+          git pull origin master
           eb deploy
