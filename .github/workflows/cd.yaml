@@ -1,0 +1,21 @@
+name: Continues Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Node-Docker-EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.TARGET_HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd tet
+          git pull origin master
+          eb deploy
