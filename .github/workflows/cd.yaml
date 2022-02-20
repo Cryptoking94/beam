@@ -16,6 +16,6 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
-          cd tet
+          cd /home/ubuntu/tet
           git pull origin master
           eb deploy
